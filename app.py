@@ -294,12 +294,14 @@ if not API_AVAILABLE and os.getenv("AUTO_START_API", "1") == "1":
                     env2 = os.environ.copy()
                     env2["API_PORT"] = API_PORT
                     env2["EXTERNAL_PORT"] = API_PORT
+                    env2["API_HOST"] = "0.0.0.0"
                     subprocess.Popen([sys.executable, "api_server_local.py"], creationflags=0, env=env2)
             except Exception:
                 import subprocess, sys
                 env2 = os.environ.copy()
                 env2["API_PORT"] = API_PORT
                 env2["EXTERNAL_PORT"] = API_PORT
+                env2["API_HOST"] = "0.0.0.0"
                 subprocess.Popen([sys.executable, "api_server_local.py"], creationflags=0, env=env2)
             # 等待API启动，最多等待10秒
             max_wait_s = 10
